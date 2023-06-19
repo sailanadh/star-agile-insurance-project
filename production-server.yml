@@ -15,6 +15,12 @@
     command : sudo systemctl start docker
     become : yes
     become_user : root
+
+  - name: stop container
+    command: sudo docker stop insure-me
+    
+  - name: remove container
+    command: sudo docker rm insure-me
     
   - name: Deploy Docker Container
     command: sudo docker run -itd -p 8084:8081 --name insure-me sailanadh123/insure-me:1.0
